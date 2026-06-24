@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  ECR_REPO_DB: tienda-db
+  ECR_REPO_DB: tienda-perritos-db
 
 jobs:
   build-and-deploy:
@@ -66,8 +66,8 @@ jobs:
           kubectl apply -f k8s-db/mysql-service.yaml -n $EKS_NAMESPACE
           
           # Actualizar el deployment con la imagen recién creada
-          kubectl set image deployment/tienda-db \
+          kubectl set image deployment/tienda-perritos-db \
             mysql=$ECR_REGISTRY/${ECR_REPO_DB}:${IMAGE_TAG} \
             -n $EKS_NAMESPACE
             
-          kubectl rollout status deployment/tienda-db -n $EKS_NAMESPACE
+          kubectl rollout status deployment/tienda-perritos-db -n $EKS_NAMESPACE
