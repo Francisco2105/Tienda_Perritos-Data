@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: tienda-perritos-db
+        
     spec:
       containers:
         - name: mysql
